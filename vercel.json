@@ -1,15 +1,3 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "app.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "app.js"
-    }
-  ]
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:6a886725b1309c583d0dca6e5314fe44dd7d8f19749fe291fef5af401c342798
+size 190
