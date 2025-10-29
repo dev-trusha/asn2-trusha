@@ -1,0 +1,43 @@
+<h1>{{title}}</h1>
+<p>Total records in dataset: {{totalRecords}} | Displaying: {{displayedRecords}}</p>
+
+{{#if isClean}}
+<div class="success-message">
+    <strong>Clean Data View:</strong> Showing only records with non-empty names.
+</div>
+{{/if}}
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+<th>Name</th>
+<th>Host Name</th>
+<th>Neighbourhood</th>
+<th>Price</th>
+<th>Room Type</th>
+<th>Property Type</th>
+<th>Thumbnail</th>
+</tr>
+</thead>
+<tbody>
+    {{#each data}}
+    <tr {{#isEmptyName this.NAME}}class="empty-name"{{/isEmptyName}}>
+        <td>{{this.id}}</td>
+        <td>{{checkName this.NAME}}</td>
+        <td>{{this.[host name]}}</td>
+        <td>{{this.neighbourhood}}</td>
+        <td>{{formatPrice this.price}}</td>
+        <td>{{this.[room type]}}</td>
+        <td>{{this.property_type}}</td>
+        <td>
+            {{#if this.thumbnail}}
+            <img src="{{this.thumbnail}}" alt="Property" style="width: 50px; height: auto;">
+            {{else}}
+            No Image
+            {{/if}}
+        </td>
+    </tr>
+    {{/each}}
+</tbody>
+</table>

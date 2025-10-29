@@ -1,0 +1,40 @@
+<h1>Search by Property Type</h1>
+
+<form method="POST" action="/search/produceLine/">
+    <div class="form-group">
+        <label for="productLine">Enter Property Type (e.g., apartment, house, loft):</label>
+        <input type="text" id="productLine" name="productLine" required>
+    </div>
+    <button type="submit">Search</button>
+</form>
+
+{{#if hasSearched}}
+    <div class="search-results mt-2">
+        <h3>Search Results for "{{searchTerm}}"</h3>
+        <p>Found {{totalFound}} results. Showing first {{results.length}}.</p>
+        
+        {{#if results}}
+            {{#each results}}
+            <div class="property-card">
+                <div class="property-header">
+                    {{#if this.thumbnail}}
+                    <img src="{{this.thumbnail}}" alt="Property" class="property-image">
+                    {{/if}}
+                    <div class="property-info">
+                        <h3>{{checkName this.NAME}}</h3>
+                        <p><strong>ID:</strong> {{this.id}}</p>
+                        <p><strong>Host:</strong> {{this.[host name]}}</p>
+                        <p><strong>Price:</strong> {{formatPrice this.price}}</p>
+                        <p><strong>Property Type:</strong> {{this.property_type}}</p>
+                        <p><strong>Room Type:</strong> {{this.[room type]}}</p>
+                        <p><strong>Neighbourhood:</strong> {{this.neighbourhood}}</p>
+                        <p><strong>Minimum Nights:</strong> {{this.minimum_nights}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        {{else}}
+            <p class="error-message">No properties found for type: "{{searchTerm}}"</p>
+        {{/if}}
+    </div>
+{{/if}}

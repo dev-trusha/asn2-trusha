@@ -1,0 +1,44 @@
+<h1>Search by Price Range</h1>
+
+<form method="POST" action="/viewData/price">
+    <div class="form-group">
+        <label for="minPrice">Minimum Price:</label>
+        <input type="number" id="minPrice" name="minPrice" min="0" step="1" required>
+    </div>
+    <div class="form-group">
+        <label for="maxPrice">Maximum Price:</label>
+        <input type="number" id="maxPrice" name="maxPrice" min="0" step="1" required>
+    </div>
+    <button type="submit">Search</button>
+</form>
+
+{{#if hasSearched}}
+    <div class="search-results mt-2">
+        <h3>Price Range Results: ${{minPrice}} - ${{maxPrice}}</h3>
+        <p>Found {{totalFound}} results. Showing first {{results.length}}.</p>
+        
+        {{#if results}}
+            {{#each results}}
+            <div class="property-card">
+                <div class="property-header">
+                    {{#if this.thumbnail}}
+                    <img src="{{this.thumbnail}}" alt="Property" class="property-image">
+                    {{/if}}
+                    <div class="property-info">
+                        <h3>{{checkName this.NAME}}</h3>
+                        <p><strong>ID:</strong> {{this.id}}</p>
+                        <p><strong>Host:</strong> {{this.[host name]}}</p>
+                        <p><strong>Price:</strong> {{formatPrice this.price}}</p>
+                        <p><strong>Property Type:</strong> {{this.property_type}}</p>
+                        <p><strong>Room Type:</strong> {{this.[room type]}}</p>
+                        <p><strong>Neighbourhood:</strong> {{this.neighbourhood}}</p>
+                        <p><strong>Minimum Nights:</strong> {{this.minimum_nights}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        {{else}}
+            <p class="error-message">No properties found in the price range: ${{minPrice}} - ${{maxPrice}}</p>
+        {{/if}}
+    </div>
+{{/if}}

@@ -1,0 +1,33 @@
+<h1>Search by Invoice ID</h1>
+
+<form method="POST" action="/search/invoiceID/">
+    <div class="form-group">
+        <label for="invoiceId">Enter Invoice ID:</label>
+        <input type="text" id="invoiceId" name="invoiceId" required>
+    </div>
+    <button type="submit">Search</button>
+</form>
+
+{{#if hasSearched}}
+    <div class="search-results mt-2">
+        {{#if result}}
+            <div class="property-card">
+                <div class="property-header">
+                    {{#if result.thumbnail}}
+                    <img src="{{result.thumbnail}}" alt="Property" class="property-image">
+                    {{/if}}
+                    <div class="property-info">
+                        <h3>{{checkName result.NAME}}</h3>
+                        <p><strong>ID:</strong> {{result.id}}</p>
+                        <p><strong>Host:</strong> {{result.[host name]}}</p>
+                        <p><strong>Price:</strong> {{formatPrice result.price}}</p>
+                        <p><strong>Room Type:</strong> {{result.[room type]}}</p>
+                        <p><strong>Neighbourhood:</strong> {{result.neighbourhood}}</p>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+            <p class="error-message">No record found with ID: {{searchTerm}}</p>
+        {{/if}}
+    </div>
+{{/if}}
