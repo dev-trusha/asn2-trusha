@@ -8,9 +8,10 @@
     "dev": "node app.js"
   },
   "dependencies": {
+    "debug": "^4.3.4",
     "express": "^4.18.2",
     "express-handlebars": "^7.1.2",
-    "debug": "^4.3.4"
+    "router": "^2.2.0"
   },
   "engines": {
     "node": ">=18.x"
