@@ -48,17 +48,27 @@ app.engine('.hbs', engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Load JSON data
 let airbnbData = [];
+
 async function loadData() {
   try {
-    const data = await fs.readFile('./airbnb_with_photos.json', 'utf8');
+    console.log('Current directory:', process.cwd());
+    console.log('Files in directory:', await fs.readdir(process.cwd()));
+    
+    const filePath = path.join(process.cwd(), 'airbnb_with_photos.json');
+    console.log('Looking for file at:', filePath);
+    
+    const data = await fs.readFile(filePath, 'utf8');
     airbnbData = JSON.parse(data);
-    console.log(`Loaded ${airbnbData.length} records`);
+    console.log("Successfully loaded ${airbnbData.length} records from JSON file");
   } catch (error) {
-    console.error('Error loading data:', error);
+    console.error("Error loading JSON data file:", error.message);
+    console.log("Using sample data instead");
+    airbnbData = sampleData;
   }
 }
+
+// Initialize data
 loadData();
 
 // Routes
