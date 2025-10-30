@@ -46,6 +46,7 @@ app.engine('.hbs', engine({
   }
 }));
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Load JSON data
 let airbnbData = [];
