@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a4b534a6bb5f48caf3e4162112e49e479307e95f91ea762b772578dcf6fd1411
-size 287
+{
+  "name": "asn2-trusha",
+  "version": "1.0.0",
+  "description": "ITE5315 Assignment 2 - Express with Handlebars",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2"
+  },
+  "engines": {
+    "node": ">=18.x"
+  }
+}
